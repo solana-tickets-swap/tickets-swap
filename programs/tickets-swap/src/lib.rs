@@ -1,11 +1,16 @@
-use anchor_lang::prelude::*;
-use anchor_spl::{
-    associated_token::AssociatedToken,
-    metadata::{
-        create_master_edition_v3, create_metadata_accounts_v3, mpl_token_metadata::types::DataV2,
-        CreateMasterEditionV3, CreateMetadataAccountsV3, Metadata,
+#![allow(clippy::result_large_err)]
+
+use {
+    anchor_lang::prelude::*,
+    anchor_spl::{
+        associated_token::AssociatedToken,
+        metadata::{
+            create_master_edition_v3, create_metadata_accounts_v3,
+            mpl_token_metadata::types::DataV2, CreateMasterEditionV3, CreateMetadataAccountsV3,
+            Metadata,
+        },
+        token::{mint_to, Mint, MintTo, Token, TokenAccount},
     },
-    token::{mint_to, Mint, MintTo, Token, TokenAccount},
 };
 declare_id!("9Pjw3S522y2xavPFvmZ1pSHU8akopTzXCdCY3iY9eRAA");
 
@@ -135,6 +140,7 @@ pub struct MintTickets<'info> {
     pub payer: Signer<'info>,
     #[account(mut)]
     pub event: Account<'info, Event>,
+    /// CHECK: Validate address by deriving pda
     #[account(
         mut,
         seeds = [b"metadata", token_metadata_program.key().as_ref(), mint_account.key().as_ref()],
@@ -142,9 +148,11 @@ pub struct MintTickets<'info> {
         seeds::program = token_metadata_program.key(),
     )]
     pub metadata_account: UncheckedAccount<'info>,
+
+    /// CHECK: Validate address by deriving pda
     #[account(
         mut,
-        seeds = [b"edition", token_metadata_program.key().as_ref(), mint_account.key().as_ref()],
+        seeds = [b"metadata", token_metadata_program.key().as_ref(), mint_account.key().as_ref(), b"edition"],
         bump,
         seeds::program = token_metadata_program.key(),
     )]
