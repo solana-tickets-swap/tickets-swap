@@ -1,7 +1,7 @@
 import { web3, BN } from "@coral-xyz/anchor";
 import { PublicKey, SystemProgram } from "@solana/web3.js";
 import { toast } from "react-toastify";
-import { getAnchorProgram, getNetworkUrl } from "../../utils/anchorUtils";
+import { getAnchorProgram, getNetworkUrl } from "../utils/anchorUtils";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 // Imports ajoutés pour le NFT :
 import { TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from "@solana/spl-token";
@@ -10,7 +10,7 @@ import { publicKey } from "@metaplex-foundation/umi";
 import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
 import { walletAdapterIdentity } from "@metaplex-foundation/umi-signer-wallet-adapters";
 
-export const handleSubmitCreateNft = async (
+export const handleCreateNft = async (
     ticketPublicKey: PublicKey,
     wallet: ReturnType<typeof useAnchorWallet>,
     eventPublicKey: string,
@@ -79,7 +79,7 @@ export const handleSubmitCreateNft = async (
         const accounts = await program.account.ticket.all([
             {
                 memcmp: {
-                    offset: 8, // taille de l'en-tête de l'account.
+                    offset: 8, // Taille de l'en-tête de l'account.
                     bytes: eventPublicKey,
                 },
             },

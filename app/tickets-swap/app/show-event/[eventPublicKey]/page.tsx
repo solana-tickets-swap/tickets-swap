@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { getAnchorProgram } from "../../../src/utils/anchorUtils";
-import { handleSubmitBuyTicket } from "../../../src/utils/handlers/HandleBuyTicket";
-import { handleSubmitCreateNft } from "../../../src/utils/handlers/HandleCreateNft";
+import { handleCopyToClipboard } from "../../../src/utils/various";
+import { handleBuyTicket } from "../../../src/handlers/HandleBuyTicket";
+import { handleCreateNft } from "../../../src/handlers/HandleCreateNft";
 import { PublicKey } from "@solana/web3.js";
 import Layout from "../../../src/components/Layout";
+import QRCode from "qrcode.react";
 
 const ShowEvent: React.FC = () => {
     const router = useRouter();
@@ -17,6 +19,8 @@ const ShowEvent: React.FC = () => {
     const [eventDetails, setEventDetails] = useState<any>(null);
     const [tickets, setTickets] = useState<any[]>([]);
     const wallet = useAnchorWallet();
+
+    const qrCodeRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
     useEffect(() => {
         const fetchEventDetails = async () => {
@@ -34,7 +38,7 @@ const ShowEvent: React.FC = () => {
                 const accounts = await program.account.ticket.all([
                     {
                         memcmp: {
-                            offset: 8, // taille de l'en-tête de l'account.
+                            offset: 8, // Taille de l'en-tête de l'account.
                             bytes: eventPublicKey,
                         },
                     },
@@ -47,6 +51,16 @@ const ShowEvent: React.FC = () => {
 
         fetchEventDetails();
     }, [wallet, eventPublicKey]);
+
+    const handleDownloadQrCode = (nftMint: string) => {
+        const qrCodeCanvas = qrCodeRefs.current[nftMint]?.querySelector("canvas");
+        if (qrCodeCanvas) {
+            const link = document.createElement("a");
+            link.href = qrCodeCanvas.toDataURL("image/png");
+            link.download = `qrcode-${nftMint}.png`;
+            link.click();
+        }
+    };
 
     return (
         <Layout>
@@ -71,19 +85,27 @@ const ShowEvent: React.FC = () => {
                             </p>
                             <p className="text-center text-gray-700 mb-2">
                                 <b>PublicKey de l'organisateur</b> :
-                                <span className="block truncate bg-gray-200 p-1 rounded" title={eventDetails.organizer.toBase58()}>
+                                <span
+                                    className="block truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                    title={eventDetails.organizer.toBase58()}
+                                    onClick={() => handleCopyToClipboard(eventDetails.organizer.toBase58())}
+                                >
                                     {eventDetails.organizer.toBase58()}
                                 </span>
                             </p>
                             <p className="text-center text-gray-700">
                                 <b>PublicKey de l'événement</b> :
-                                <span className="block truncate bg-gray-200 p-1 rounded" title={eventPublicKey as string}>
+                                <span
+                                    className="block truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                    title={eventPublicKey as string}
+                                    onClick={() => handleCopyToClipboard(eventPublicKey as string)}
+                                >
                                     {eventPublicKey}
                                 </span>
                             </p>
                         </div>
                     )}
-                    <form className="space-y-6" onSubmit={(e) => handleSubmitBuyTicket(e, eventPublicKey!, eventDetails, wallet, setTickets)}>
+                    <form className="space-y-6" onSubmit={(e) => handleBuyTicket(e, eventPublicKey!, eventDetails, wallet, setTickets)}>
                         <div>
                             <button
                                 type="submit"
@@ -109,28 +131,51 @@ const ShowEvent: React.FC = () => {
                                 </p>
                                 <p className="mb-2">
                                     <b>PublicKey de l'acheteur</b> :{" "}
-                                    <span className="truncate bg-gray-200 p-1 rounded" title={ticket.account.owner.toBase58()}>
+                                    <span
+                                        className="truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                        onClick={() => handleCopyToClipboard(ticket.account.owner.toBase58())}
+                                    >
                                         {ticket.account.owner.toBase58()}
                                     </span>
                                 </p>
-                                <p className="mb-2">
+                                <p className="mb-5">
                                     <b>PublicKey du ticket</b> :{" "}
-                                    <span className="truncate bg-gray-200 p-1 rounded" title={ticket.publicKey.toBase58()}>
+                                    <span
+                                        className="truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                        onClick={() => handleCopyToClipboard(ticket.publicKey.toBase58())}
+                                    >
                                         {ticket.publicKey.toBase58()}
                                     </span>
                                 </p>
                                 {ticket.account.nftMint ? (
-                                    <p>
-                                        <b>PublicKey NFT Mint</b> :{" "}
-                                        <span className="truncate bg-yellow-200 p-1 rounded" title={ticket.account.nftMint.toBase58()}>
-                                            {ticket.account.nftMint.toBase58()}
-                                        </span>
-                                    </p>
+                                    <div className="border border-grey-600 p-2 rounded-md text-center">
+                                        <p>
+                                            <b>PublicKey NFT Mint</b> :
+                                        </p>
+                                        <p className="mt-2 mb-3">
+                                            <span
+                                                className="truncate bg-yellow-200 p-1 rounded cursor-pointer"
+                                                onClick={() => handleCopyToClipboard(ticket.account.nftMint.toBase58())}
+                                            >
+                                                {ticket.account.nftMint.toBase58()}
+                                            </span>
+                                        </p>
+                                        <div
+                                            ref={(el) => {
+                                                qrCodeRefs.current[ticket.account.nftMint.toBase58()] = el;
+                                            }}
+                                            onClick={() => handleDownloadQrCode(ticket.account.nftMint.toBase58())}
+                                            className="cursor-pointer mx-auto mt-2 flex justify-center"
+                                            title="Télécharger le QR code"
+                                        >
+                                            <QRCode value={ticket.account.nftMint.toBase58()} size={80} data-nft-mint={ticket.account.nftMint.toBase58()} />
+                                        </div>
+                                    </div>
                                 ) : (
                                     ticket.account.owner.equals(wallet?.publicKey) && (
                                         <button
-                                            onClick={() => handleSubmitCreateNft(ticket.publicKey, wallet, eventPublicKey!, setTickets)}
-                                            className="group relative inline-flex justify-center mt-3 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700"
+                                            onClick={() => handleCreateNft(ticket.publicKey, wallet, eventPublicKey!, setTickets)}
+                                            className="group relative inline-flex justify-center mt-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700"
                                         >
                                             Générer mon NFT
                                         </button>

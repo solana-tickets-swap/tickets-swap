@@ -22,7 +22,7 @@ describe("create_event_and_ticket", () => {
     const eventAccount = web3.Keypair.generate();
 
     // 20000000000 Lamports = 20 SOL.
-    const ticketPrice = new BN(20000000000);
+    const ticketPrice = new BN(200000000);
 
     // Paire de clés pour le compte du ticketAccount qui sera utilisé pour tester le success, et pour tester la création du NFT.
     const ticketAccountForNft = web3.Keypair.generate();

@@ -1,10 +1,10 @@
 import { web3, BN } from "@coral-xyz/anchor";
 import { PublicKey } from "@solana/web3.js";
 import { toast } from "react-toastify";
-import { getAnchorProgram } from "../../utils/anchorUtils";
+import { getAnchorProgram } from "../utils/anchorUtils";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 
-export const handleSubmitBuyTicket = async (
+export const handleBuyTicket = async (
     e: React.FormEvent,
     eventPublicKey: string,
     eventDetails: any,
@@ -47,7 +47,7 @@ export const handleSubmitBuyTicket = async (
         const accounts = await program.account.ticket.all([
             {
                 memcmp: {
-                    offset: 8, // taille de l'en-tête de l'account.
+                    offset: 8, // Taille de l'en-tête de l'account.
                     bytes: eventPublicKey,
                 },
             },

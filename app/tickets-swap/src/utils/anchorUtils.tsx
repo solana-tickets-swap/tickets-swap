@@ -3,6 +3,7 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { Program, AnchorProvider, web3, Idl, setProvider } from "@coral-xyz/anchor";
 import { Wallet } from "@coral-xyz/anchor/dist/cjs/provider";
 import idl from "../idl/tickets_swap.json";
+import cluster from "cluster";
 
 const { SystemProgram } = web3;
 
@@ -34,7 +35,7 @@ export const getNetworkAdapterUrl = (network: string): string => {
             return "http://127.0.0.1:8899";
         case "devnet-custom-rpc":
             if (process.env.CUSTOM_RPC_URL) {
-                return JSON.parse(process.env.CUSTOM_RPC_URL);
+                return process.env.CUSTOM_RPC_URL || clusterApiUrl("devnet");
             }
             return clusterApiUrl(WalletAdapterNetwork.Devnet);
         case "devnet":
@@ -52,7 +53,7 @@ const network = process.env.NEXT_PUBLIC_REACT_APP_SOLANA_NETWORK!;
 const networkUrl = getNetworkAdapterUrl(network); // URL du validateur.
 
 const opts = {
-    preflightCommitment: process.env.NEXT_PUBLIC_REACT_APP_SOLANA_COMMITMENT as Commitment,
+    preflightCommitment: process.env.NEXT_PUBLIC_QN_RPC as Commitment,
 };
 
 export const getAnchorProgram = (wallet: Wallet) => {
@@ -69,7 +70,7 @@ export const getAnchorProgram = (wallet: Wallet) => {
 
     // Initialise le programme Anchor.
     //const program = new Program(idl as Idl, provider); // for "@coral-xyz/anchor": "0.30.1"
-    const program = new Program(idl as Idl, new PublicKey(idl.metadata.address), provider); // for "@coral-xyz/anchor": "0.29.0"
+    const program = new Program(idl as Idl, new PublicKey("E3Mqfc5uYhQ1V8VCNQpWnx59LXECGYo3fvfvFgxFq1Ah"), provider); // for "@coral-xyz/anchor": "0.29.0"
 
     return { program, provider, connection, SystemProgram };
 };
