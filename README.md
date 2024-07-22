@@ -9,7 +9,9 @@
 
 ## Transactions
 
-Pour consulter les transactions de notre programme, veuillez visiter le lien suivant : [Explorer Solana - Transactions du programme](https://explorer.solana.com/address/NNZTRskfa387bCwZv28MyHwqmJt9qRqRxK2cskfBzTf?cluster=devnet)
+Pour consulter les transactions de notre programme, veuillez visiter le lien suivant : [Explorer Solana - Transactions du programme](https://explorer.solana.com/address/E3Mqfc5uYhQ1V8VCNQpWnx59LXECGYo3fvfvFgxFq1Ah?cluster=devnet)
+
+Exemple d'un NFT créé : [Explorer Solana - Exemple d'un NFT](https://explorer.solana.com/address/NNZTRskfa387bCwZv28MyHwqmJt9qRqRxK2cskfBzTf?cluster=devnet)
 
 
 ## Présentation
