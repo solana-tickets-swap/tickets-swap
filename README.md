@@ -2,8 +2,9 @@
 
 ## Groupe 23:
 - Stephen Damian ([@s-damian](https://github.com/s-damian))
-- Thomas Dupuy ([@Cecile-Hirschauer](https://github.com/Cecile-Hirschauer))
-- Cécile Hirschauer ([tomaka7](https://github.com/tomaka7))
+- Thomas Dupuy ([tomaka7](https://github.com/tomaka7))
+- Cécile Hirschauer ([@Cecile-Hirschauer](https://github.com/Cecile-Hirschauer))
+
 
 
 ## Transactions
