@@ -18,7 +18,7 @@ Exemple d'un NFT créé : [Explorer Solana - Exemple d'un NFT](https://explorer.
 
 Une plateforme pour vendre des billets d'événements (concerts, spectacles, conférences) sous forme de NFT, permettant une vérification facile et sécurisée des billets.
 
-## Technos
+## Technologies
 
 - **Anchor** : Framework pour le développement de smart contracts sur Solana.
 - **Next.js** : Framework React pour le développement de sites web et d'applications.
