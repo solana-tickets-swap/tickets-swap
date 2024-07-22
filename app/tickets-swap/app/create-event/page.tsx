@@ -40,8 +40,8 @@ const CreateEvent: React.FC = () => {
     return (
         <Layout>
             <div className="flex items-center justify-center">
-                <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-md">
-                    <h1 className="text-center text-3xl font-extrabold text-gray-900">Créer un Événement</h1>
+                <div className="max-w-md w-full space-y-8 p-10 mt-3 bg-white rounded-xl shadow-md">
+                    <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-3">Créer un Événement</h1>
                     <p className="text-gray-600 mb-4">
                         Créez un événement unique sur la blockchain Solana, et vendez des tickets en toute sécurité sous forme de NFTs.
                     </p>

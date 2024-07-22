@@ -65,10 +65,10 @@ const ShowEvent: React.FC = () => {
     return (
         <Layout>
             <div className="flex items-center justify-center">
-                <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-md">
+                <div className="max-w-md w-full space-y-8 p-10 mt-3 bg-white rounded-xl shadow-md">
                     {eventDetails && (
                         <div className="mb-6">
-                            <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-2">{eventDetails.title}</h1>
+                            <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-3">{eventDetails.title}</h1>
                             <p className="text-center text-gray-700 mb-2">
                                 <b>Description</b> : {eventDetails.description}
                             </p>

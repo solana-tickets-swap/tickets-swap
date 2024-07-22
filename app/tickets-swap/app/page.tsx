@@ -6,11 +6,11 @@ import Layout from "../src/components/Layout";
 const Home: React.FC = () => {
     return (
         <Layout>
-            <div className="flex flex-col items-center justify-center min-h-screen py-8 px-4 bg-gray-100">
+            <div className="flex flex-col items-center justify-center bg-gray-100">
                 <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Bienvenue sur notre plateforme d'événements et de NFTs</h1>
                 <p className="text-lg text-gray-700 mb-8 text-center max-w-2xl">
-                    Notre plateforme permet aux organisateurs d'événements de créer des événements uniques et de vendre des tickets sous forme de NFTs. Les
-                    participants peuvent acheter des tickets, vérifier leur authenticité et recevoir des NFTs exclusifs pour chaque événement.
+                    Notre plateforme, basée sur la blockchain Solana, permet aux organisateurs d'événements de créer des événements uniques et de vendre des
+                    tickets sous forme de NFTs.
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-8">
