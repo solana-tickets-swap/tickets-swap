@@ -42,7 +42,7 @@ programs/
         nft_manager.rs
         ticket_manager.rs
       lib.rs
-    Cargo.toml
+  Cargo.toml
   Xargo.toml
 sh/
   copy-idl.sh
