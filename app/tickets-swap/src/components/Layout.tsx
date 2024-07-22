@@ -21,9 +21,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     };
 
     return (
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center flex flex-col min-h-screen">
             <NavBar />
-            <div className="min-h-screen bg-gray-100 flex flex-col py-12 px-8">
+            <div className="flex-grow bg-gray-100 flex flex-col py-12 px-8">
                 {wallet?.publicKey ? (
                     <>
                         {children}
@@ -48,6 +48,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </div>
                 )}
             </div>
+            <footer className="bg-blue-800 text-white py-4">
+                <p>&copy; {new Date().getFullYear()} | Tickets Swap</p>
+            </footer>
         </div>
     );
 };

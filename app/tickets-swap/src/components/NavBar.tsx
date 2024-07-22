@@ -13,7 +13,7 @@ const NavBar: React.FC = () => {
     };
 
     return (
-        <nav className="bg-blue-600 p-4">
+        <nav className="bg-blue-700 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <ul className="hidden md:flex justify-around items-center list-none p-0 m-0 w-full">
                     <li>
