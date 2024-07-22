@@ -16,8 +16,9 @@ Pour consulter les transactions de notre programme, veuillez visiter le lien sui
 
 Une plateforme pour vendre des billets d'événements (concerts, spectacles, conférences) sous forme de NFT, permettant une vérification facile et sécurisée des billets.
 
-## Techno
+## Technos
 
+- **Rust** : Langage de programmation.
 - **Anchor** : Framework pour le développement de smart contracts sur Solana.
 - **Next.js** : Framework React pour le développement de sites web et d'applications.
 - **WSolana-Web3.js** : Bibliothèque JavaScript pour interagir avec la blockchain Solana.
