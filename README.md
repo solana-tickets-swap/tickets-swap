@@ -74,7 +74,7 @@ tsconfig.json
     - **Achat de Tickets :**
         - Permet aux utilisateurs d'acheter des tickets pour des événements.
         - Assigne le ticket à l'acheteur et transfère le montant du ticket à l'organisateur de l'événement.
-- Vérification des tickets
+        - Vérification des tickets
 
 ## Tests
 Pour exécuter les tests, utilisez la commande suivante :
