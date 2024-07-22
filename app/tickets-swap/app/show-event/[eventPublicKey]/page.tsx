@@ -127,7 +127,7 @@ const ShowEvent: React.FC = () => {
                                 <p className="mb-2">
                                     <b>Date et heure de l'achat</b> : {new Date(ticket.account.dateOfPurchase.toNumber() * 1000).toLocaleString()}
                                 </p>
-                                <p className="mb-2">
+                                <p className="mb-2 flex items-center justify-center">
                                     <b>Clé publique de l'acheteur</b> :{" "}
                                     <span
                                         className="truncate bg-gray-200 p-1 rounded cursor-pointer"
@@ -136,10 +136,10 @@ const ShowEvent: React.FC = () => {
                                         {ticket.account.owner.toBase58()}
                                     </span>
                                 </p>
-                                <p className="mb-5">
+                                <p className="mb-5 flex items-center justify-center">
                                     <b>Clé publique du ticket</b> :{" "}
                                     <span
-                                        className="truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                        className="truncate bg-gray-200 p-1 rounded cursor-pointer ml-2"
                                         onClick={() => handleCopyToClipboard(ticket.publicKey.toBase58())}
                                     >
                                         {ticket.publicKey.toBase58()}
@@ -150,7 +150,7 @@ const ShowEvent: React.FC = () => {
                                         <p>
                                             <b>Clé publique du NFT</b> :
                                         </p>
-                                        <p className="mt-2 mb-3">
+                                        <p className="mt-2 flex items-center justify-center">
                                             <span
                                                 className="truncate bg-yellow-200 p-1 rounded cursor-pointer"
                                                 onClick={() => handleCopyToClipboard(ticket.account.nftMint.toBase58())}

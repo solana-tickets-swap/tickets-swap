@@ -79,19 +79,19 @@ const ListEvents: React.FC = () => {
                             <p className="mb-2">
                                 <b>Prix du Ticket</b> : {(event.accountData.ticketPrice.toNumber() / 1_000_000_000).toFixed(9)} SOL
                             </p>
-                            <p className="mb-2">
+                            <p className="mb-2 flex items-center justify-center">
                                 <b>Clé publique de l'organisateur</b> :{" "}
                                 <span
-                                    className="truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                    className="truncate bg-gray-200 p-1 rounded cursor-pointer ml-2"
                                     onClick={() => handleCopyToClipboard(event.accountData.organizer.toBase58())}
                                 >
                                     {event.accountData.organizer.toBase58()}
                                 </span>
                             </p>
-                            <p className="mb-2">
+                            <p className="mb-2 flex items-center justify-center">
                                 <b>Clé publique de l'événement</b> :{" "}
                                 <span
-                                    className="truncate bg-gray-200 p-1 rounded cursor-pointer"
+                                    className="truncate bg-gray-200 p-1 rounded cursor-pointer ml-2"
                                     onClick={() => handleCopyToClipboard(event.publicKey.toBase58())}
                                 >
                                     {event.publicKey.toBase58()}
