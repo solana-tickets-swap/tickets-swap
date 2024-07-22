@@ -91,6 +91,10 @@ plaintext
 Le programme a été déployé en local et sur un custom RPC Devnet QuickNode :
 
 ```
+## Transactions
+
+Pour consulter les transactions de notre programme, veuillez visiter le lien suivant : [Explorer Solana - Transactions du programme](https://explorer.solana.com/address/NNZTRskfa387bCwZv28MyHwqmJt9qRqRxK2cskfBzTf?cluster=devnet)
+
 Cluster: https://morning-capable-pool.solana-devnet.quiknode.pro/997457cc66b9130e410f8b30a3200d6d755b77cb/
 Upgrade authority: ~/.config/solana/id.json
 Program Id: E3Mqfc5uYhQ1V8VCNQpWnx59LXECGYo3fvfvFgxFq1Ah
