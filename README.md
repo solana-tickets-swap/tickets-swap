@@ -22,7 +22,7 @@ Une plateforme pour vendre des billets d'événements (concerts, spectacles, con
 
 - **Anchor** : Framework pour le développement de smart contracts sur Solana.
 - **Next.js** : Framework React pour le développement de sites web et d'applications.
-- **WSolana-Web3.js** : Bibliothèque JavaScript pour interagir avec la blockchain Solana.
+- **Solana-Web3.js** : Bibliothèque JavaScript pour interagir avec la blockchain Solana.
 - **metaplex_metadata_token** : Programme pour la gestion des métadonnées des tokens NFT sur la blockchain Solana.
 - **spl-token** : Librairie pour la gestion des tokens sur Solana.
 - **Tailwind CSS** : Framework CSS pour la conception de styles rapides et modulaires.
