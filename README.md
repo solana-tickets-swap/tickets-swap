@@ -32,6 +32,13 @@ Une plateforme pour vendre des billets d'événements (concerts, spectacles, con
 ```plaintext
 app/
   tickets-swap // Front-End in Next.js
+    app/
+        // Les pages.
+    src/
+        components/
+        handlers/
+        idl/
+        utils/
 migrations/
 node_modules/
 programs/
