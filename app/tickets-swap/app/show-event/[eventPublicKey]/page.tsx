@@ -68,9 +68,7 @@ const ShowEvent: React.FC = () => {
                 <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-md">
                     {eventDetails && (
                         <div className="mb-6">
-                            <h2 className="text-center text-3xl font-extrabold text-gray-900 mb-2">
-                                <b>Titre</b> : {eventDetails.title}
-                            </h2>
+                            <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-2">{eventDetails.title}</h1>
                             <p className="text-center text-gray-700 mb-2">
                                 <b>Description</b> : {eventDetails.description}
                             </p>
@@ -84,7 +82,7 @@ const ShowEvent: React.FC = () => {
                                 <b>Prix du Ticket</b> : {(eventDetails.ticketPrice.toNumber() / 1_000_000_000).toFixed(9)} SOL
                             </p>
                             <p className="text-center text-gray-700 mb-2">
-                                <b>PublicKey de l'organisateur</b> :
+                                <b>Clé publique de l'organisateur</b> :
                                 <span
                                     className="block truncate bg-gray-200 p-1 rounded cursor-pointer"
                                     title={eventDetails.organizer.toBase58()}
@@ -94,7 +92,7 @@ const ShowEvent: React.FC = () => {
                                 </span>
                             </p>
                             <p className="text-center text-gray-700">
-                                <b>PublicKey de l'événement</b> :
+                                <b>Clé publique de l'événement</b> :
                                 <span
                                     className="block truncate bg-gray-200 p-1 rounded cursor-pointer"
                                     title={eventPublicKey as string}
@@ -119,7 +117,7 @@ const ShowEvent: React.FC = () => {
             </div>
             {tickets.length > 0 && (
                 <div className="mt-8">
-                    <h3 className="text-center text-2xl font-extrabold text-gray-900">Tickets achetés pour cet événement</h3>
+                    <h3 className="text-center text-2xl font-extrabold text-gray-900">Tickets achetés pour cet événement :</h3>
                     <ul>
                         {tickets.map((ticket, index) => (
                             <li key={index} className="mt-4 p-4 bg-white rounded-md shadow-sm">
@@ -130,7 +128,7 @@ const ShowEvent: React.FC = () => {
                                     <b>Date et heure de l'achat</b> : {new Date(ticket.account.dateOfPurchase.toNumber() * 1000).toLocaleString()}
                                 </p>
                                 <p className="mb-2">
-                                    <b>PublicKey de l'acheteur</b> :{" "}
+                                    <b>Clé publique de l'acheteur</b> :{" "}
                                     <span
                                         className="truncate bg-gray-200 p-1 rounded cursor-pointer"
                                         onClick={() => handleCopyToClipboard(ticket.account.owner.toBase58())}
@@ -139,7 +137,7 @@ const ShowEvent: React.FC = () => {
                                     </span>
                                 </p>
                                 <p className="mb-5">
-                                    <b>PublicKey du ticket</b> :{" "}
+                                    <b>Clé publique du ticket</b> :{" "}
                                     <span
                                         className="truncate bg-gray-200 p-1 rounded cursor-pointer"
                                         onClick={() => handleCopyToClipboard(ticket.publicKey.toBase58())}
@@ -150,7 +148,7 @@ const ShowEvent: React.FC = () => {
                                 {ticket.account.nftMint ? (
                                     <div className="border border-grey-600 p-2 rounded-md text-center">
                                         <p>
-                                            <b>PublicKey NFT Mint</b> :
+                                            <b>Clé publique du NFT</b> :
                                         </p>
                                         <p className="mt-2 mb-3">
                                             <span

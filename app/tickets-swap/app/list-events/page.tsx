@@ -56,7 +56,11 @@ const ListEvents: React.FC = () => {
     return (
         <Layout>
             <div>
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">Liste des Événements</h2>
+                <h1 className="text-center text-3xl font-extrabold text-gray-900">Liste des Événements</h1>
+                <p className="text-gray-600 mb-4 mt-4">
+                    Découvrez tous les événements créés sur la blockchain Solana. Cliquez sur un événement pour en savoir plus et acheter des tickets en toute
+                    sécurité.
+                </p>
                 <div>
                     {events.map((event, index) => (
                         <div className="w-full p-10 mt-8 bg-white rounded-xl shadow-md" key={index}>
@@ -76,7 +80,7 @@ const ListEvents: React.FC = () => {
                                 <b>Prix du Ticket</b> : {(event.accountData.ticketPrice.toNumber() / 1_000_000_000).toFixed(9)} SOL
                             </p>
                             <p className="mb-2">
-                                <b>PublicKey de l'organisateur</b> :{" "}
+                                <b>Clé publique de l'organisateur</b> :{" "}
                                 <span
                                     className="truncate bg-gray-200 p-1 rounded cursor-pointer"
                                     onClick={() => handleCopyToClipboard(event.accountData.organizer.toBase58())}
@@ -85,7 +89,7 @@ const ListEvents: React.FC = () => {
                                 </span>
                             </p>
                             <p className="mb-2">
-                                <b>PublicKey de l'événement</b> :{" "}
+                                <b>Clé publique de l'événement</b> :{" "}
                                 <span
                                     className="truncate bg-gray-200 p-1 rounded cursor-pointer"
                                     onClick={() => handleCopyToClipboard(event.publicKey.toBase58())}
