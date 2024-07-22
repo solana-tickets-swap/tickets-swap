@@ -30,26 +30,27 @@ Une plateforme pour vendre des billets d'événements (concerts, spectacles, con
 
 ```plaintext
 app/
-  migrations/
-  node_modules/
-  programs/
+    tickets-swap // Front-End in Next.js
+migrations/
+node_modules/
+programs/
     tickets-swap/
-src/
-  kernel/
-    event_manager.rs
-    mod.rs
-    nft_manager.rs
-    ticket_manager.rs
-  lib.rs
-  Cargo.toml
-  Xargo.toml
+        src/
+            kernel/
+                event_manager.rs
+                mod.rs
+                nft_manager.rs
+                ticket_manager.rs
+            lib.rs
+        Cargo.toml
+    Xargo.toml
 sh/
   copy-idl.sh
   test-ledger.sh
 target/
 tests/
-  metaplex_token_metadata_program.so
-  tests.ts
+    metaplex_token_metadata_program.so
+    tests.ts
 .gitignore
 .prettierignore
 .prettierrc.json
