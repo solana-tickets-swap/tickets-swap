@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { ToastContainer, toast } from "react-toastify";
+import Link from "next/link";
+import { ToastContainer } from "react-toastify";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -49,7 +50,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 )}
             </div>
             <footer className="bg-blue-800 text-white py-4">
-                <p>&copy; {new Date().getFullYear()} | Tickets Swap</p>
+                <p>
+                    &copy; {new Date().getFullYear()} |{" "}
+                    <Link href="https://github.com/solana-tickets-swap/tickets-swap" className="hover:text-yellow-300" target="_blank">
+                        Tickets Swap
+                    </Link>
+                </p>
             </footer>
         </div>
     );
