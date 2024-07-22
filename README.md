@@ -67,15 +67,15 @@ tsconfig.json
 - Gestion des Événements
     - **Création d'Événements** :
         - Permet aux utilisateurs de créer des événements avec un titre, une description, une date, un lieu et un prix de billet.
-- Gestion des NFTs
-    - **Création et mint de NFTs pour les Tickets :**
-        - Permet de créer un NFT associé à un ticket, avec un nom, un symbole et une URI.
-        - Vérifie l'autorisation du signataire et si le ticket a déjà un NFT.
 - Gestion des Tickets
     - **Achat de Tickets :**
         - Permet aux utilisateurs d'acheter des tickets pour des événements.
         - Assigne le ticket à l'acheteur et transfère le montant du ticket à l'organisateur de l'événement.
-        - Vérification des tickets
+        - Vérification des tickets.
+- Gestion des NFTs
+    - **Création et mint de NFTs pour les Tickets :**
+        - Permet de créer un NFT associé à un ticket, avec un nom, un symbole et une URI.
+        - Vérifie l'autorisation du signataire et si le ticket a déjà un NFT.
 
 ## Tests
 Pour exécuter les tests, utilisez la commande suivante :
@@ -91,9 +91,9 @@ createEvent - Transaction réussie.
 buyTicket - Tentative d'achat de billet avec un propriétaire invalide.
 buyTicket - Tentative d'achat de billet réussie.
 createNft - Tentative de création d'un NFT réussie.
-plaintext
+verifyNft - Vérifier ticket appartient à l'événement.
 
-4 passing (3s)
+5 passing (3.67s)
 ```
 ## Déploiement
 Le programme a été déployé en local et sur un custom RPC Devnet QuickNode :
