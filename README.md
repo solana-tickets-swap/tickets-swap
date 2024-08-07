@@ -111,7 +111,7 @@ Le programme a été déployé en local et sur un custom RPC Devnet QuickNode :
 
 ```
 
-Cluster: https://morning-capable-pool.solana-devnet.quiknode.pro/997457cc66b9130e410f8b30a3200d6d755b77cb/
+Cluster: <RPC_URL>
 Upgrade authority: ~/.config/solana/id.json
-Program Id: E3Mqfc5uYhQ1V8VCNQpWnx59LXECGYo3fvfvFgxFq1Ah
+Program Id: <YOUR_PROGRAM_ID>
 ```
